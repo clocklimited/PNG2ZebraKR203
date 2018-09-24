@@ -1,0 +1,12 @@
+{
+  "extends": [
+    "prettier-standard"
+  ],
+  "env": {
+    "node": true
+  },
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": 2018
+  }
+}
