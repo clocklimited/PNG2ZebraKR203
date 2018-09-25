@@ -1,12 +1,12 @@
-# PNG to Zebra AK203 Printer
+# PNG to Zebra KR203 Printer
 
-Reads a PNG and outputs a stream of printer commands for the Zebra AK203
+Reads a PNG and outputs a stream of printer commands for the Zebra KR203
 
 ## Usage
 
 Before using this tool you must install the printer using the OS Printer Manager or the [Cups interface](https://support.zebra.com/cpws/docs/cups/cups_driver1_4_install.pdf) which runs on http://localhost:631
 
-Ak203 Kiosk printer doesn't support the label printer protocols provided by CUP. This will use as RAW device.
+KR203 Kiosk printer doesn't support the label printer protocols provided by CUP. This will use as RAW device.
 
 ```
   Usage: png2zebra [options] [command]
