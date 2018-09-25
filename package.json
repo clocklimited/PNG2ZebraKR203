@@ -1,4 +1,9 @@
 {
+  "name": "png-to-zebra-ak203",
+  "version": "1.0.0",
+  "bin": {
+    "png2zebra": "./index.js"
+  },
   "devDependencies": {
     "eslint": "^5.6.0",
     "eslint-config-prettier": "^3.1.0",

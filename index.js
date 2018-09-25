@@ -11,7 +11,7 @@ const pngToMonoLiner = require('./lib/png-mono-liner')
 const fs = require('fs')
 const PNG = require('pngjs').PNG
 
-args.option('input', 'PNG filename')
+args.option('input', 'PNG filename. STDIN will be used if omitted.')
 
 const flags = args.parse(process.argv)
 const filename = flags.input || 0
