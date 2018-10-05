@@ -29,6 +29,7 @@ module.exports = function(fileData) {
   ])
   console.log(93523, job)
   const printer = fs.createWriteStream('/dev/usb/lp0')
-  job.write(printer)
+  printer.write(job)
+  printer.end()
   return true
 }
