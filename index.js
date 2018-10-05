@@ -13,6 +13,7 @@ const pngToMonoLiner = require('./lib/png-mono-liner')
 const PNG = require('pngjs').PNG
 
 module.exports = function(fileData) {
+  console.log(4634, fileData)
   const png = PNG.sync.read(fileData)
 
   const job = Buffer.from([
@@ -25,6 +26,7 @@ module.exports = function(fileData) {
     ),
     ...feedAndCut
   ])
+  console.log(93523, job)
   const printer = fs.createWriteStream('/dev/usb/lp0')
   job.pipe(printer)
 }
