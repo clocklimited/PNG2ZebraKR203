@@ -10,7 +10,7 @@ const {
 const pngToMonoLiner = require('./lib/png-mono-liner')
 const PNG = require('pngjs').PNG
 
-export default fileData => {
+module.exports = function(fileData) {
   const png = PNG.sync.read(fileData)
 
   const job = Buffer.from([
@@ -25,4 +25,3 @@ export default fileData => {
   ])
   process.stdout.write(job)
 }
-
