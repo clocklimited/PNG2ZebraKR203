@@ -13,6 +13,7 @@ const pngToMonoLiner = require('./lib/png-mono-liner')
 const PNG = require('pngjs').PNG
 
 module.exports = function(fileData) {
+  console.log('Printer reached \n\n\n\n\n\n***********************\n\n\n\n\n\n')
   console.log(4634, fileData)
   const png = PNG.sync.read(fileData)
 
