@@ -7,6 +7,8 @@ const {
   secondaryBurnSpeed
 } = require('./lib/util')
 
+const fs = require('fs')
+
 const pngToMonoLiner = require('./lib/png-mono-liner')
 const PNG = require('pngjs').PNG
 
@@ -23,5 +25,6 @@ module.exports = function(fileData) {
     ),
     ...feedAndCut
   ])
-  process.stdout.write(job)
+  const printer = fs.createWriteStream('/dev/usb/lp0')
+  job.pipe(printer)
 }
