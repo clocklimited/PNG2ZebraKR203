@@ -20,16 +20,21 @@ module.exports = function(fileData) {
   const job = Buffer.from([
     ...primaryBurnSpeed(500),
     ...secondaryBurnSpeed(120),
-    ...setup,
+    ...setup
+  ])
+  console.log(93523, job)
+  const printer = fs.createWriteStream('/dev/usb/lp0')
+  printer.write(job)
+
+  const job2 = Buffer.from([
     ...pngToMonoLiner(png).reduce(
       (collection, line) => collection.concat(...lineOutput(line)),
       []
     ),
     ...feedAndCut
   ])
-  console.log(93523, job)
-  const printer = fs.createWriteStream('/dev/usb/lp0')
-  printer.write(job)
+
+  printer.write(job2)
   printer.end()
   return true
 }
