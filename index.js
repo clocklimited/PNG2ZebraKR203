@@ -3,6 +3,8 @@ const {
   lineOutput,
   setup,
   feedAndCut,
+  feed,
+  cut,
   primaryBurnSpeed,
   secondaryBurnSpeed
 } = require('./lib/util')
@@ -21,17 +23,16 @@ module.exports = function(fileData) {
     ...primaryBurnSpeed(500),
     ...secondaryBurnSpeed(120),
     ...setup
+    ...feed
   ])
   console.log(93523, job)
   const printer = fs.createWriteStream('/dev/usb/lp0')
   printer.write(job)
 
+  pngToMonoLiner(png).reduce((collection, line) => printer.write(Buffer.from([lineOutput(line)])))
+
   const job2 = Buffer.from([
-    ...pngToMonoLiner(png).reduce(
-      (collection, line) => collection.concat(...lineOutput(line)),
-      []
-    ),
-    ...feedAndCut
+    ...cut
   ])
 
   printer.write(job2)
