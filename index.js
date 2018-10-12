@@ -22,7 +22,7 @@ module.exports = function(fileData) {
   const job = Buffer.from([
     ...primaryBurnSpeed(500),
     ...secondaryBurnSpeed(120),
-    ...setup
+    ...setup,
     ...feed
   ])
   console.log(93523, job)
