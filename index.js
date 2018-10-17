@@ -15,12 +15,12 @@ const pngToMonoLiner = require('./lib/png-mono-liner')
 const PNG = require('pngjs').PNG
 
 module.exports = function(fileData) {
-  
+
   console.log('Printer reached \n\n\n\n\n\n***********************\n\n\n\n\n\n')
-  const startTime = Date.now() 
+  const startTime = Date.now()
   const png = PNG.sync.read(fileData)
   console.log('PNG Read', Date.now() - startTime)
-  
+
   const job = Buffer.from([
     ...primaryBurnSpeed(500),
     ...secondaryBurnSpeed(120),
@@ -32,15 +32,22 @@ module.exports = function(fileData) {
   console.log('Connected to printer', Date.now() - startTime)
   printer.write(job)
   console.log('Write Job Header', Date.now() - startTime)
-  pngToMonoLiner(png).reduce((collection, line) => printer.write(Buffer.from([lineOutput(line)])))
-  console.log('Main payload spooled', Date.now() - startTime)
-  const cutJob = Buffer.from([
-    ...cut
-  ])
-  console.log('Main payload spooled', Date.now() - startTime)
-  printer.write(cutJob)
-  console.log('Cut', Date.now() - startTime)
-  printer.end()
-  console.log('End', Date.now() - startTime)
-  return true
+
+
+  const onLine = line => {
+    printer.write(Buffer.from([lineOutput(line)]))
+  }
+
+  pngToMonoLiner(png, onLine, function () {
+    console.log('Main payload spooled', Date.now() - startTime)
+    const cutJob = Buffer.from([
+      ...cut
+    ])
+    console.log('Main payload spooled', Date.now() - startTime)
+    printer.write(cutJob)
+    console.log('Cut', Date.now() - startTime)
+    printer.end()
+    console.log('End', Date.now() - startTime)
+    return true
+  })
 }
