@@ -10,13 +10,15 @@ const {
 const fs = require('fs')
 
 const pngToMonoLiner = require('./lib/png-mono-liner')
-const PNG = require('pngjs').PNG
+const UPNG = require('upng-js')
 
-module.exports = function(fileData) {
-
-  console.log('**********Printer reached *************\n**************************************')
+module.exports = function(png) {
+  console.log(
+    '**********Printer reached *************\n**************************************'
+  )
   const startTime = Date.now()
-  const png = PNG.sync.read(fileData)
+
+  const pngRGB = UPNG.decode(png.data)
   let lines = []
   console.log('PNG Read', Date.now() - startTime)
 
@@ -25,25 +27,24 @@ module.exports = function(fileData) {
   console.log('Connected to printer', Date.now() - startTime)
   console.log('Write Job Header', Date.now() - startTime)
 
-
   const onLine = line => {
     lines.push(line)
   }
 
-  pngToMonoLiner(png, onLine, function () {
+  pngToMonoLiner(pngRGB, onLine, function() {
     console.log('Main payload spooled', Date.now() - startTime)
 
+    const transformedLines = lines.map(line => lineOutput(line))
 
-    const job = Buffer.from([
-      ...primaryBurnSpeed(500),
-      ...secondaryBurnSpeed(120),
-      ...setup,
-      ...lines.reduce(
-        (collection, line) => collection.concat(...lineOutput(line)),
-        []
-      ),
-      ...feedAndCut
-    ])
+    const mainBody = [].concat.apply([], transformedLines)
+
+    const primary = primaryBurnSpeed(500)
+
+    const secondary = secondaryBurnSpeed(120)
+
+    const job = Buffer.from(
+      primary.concat(secondary, setup, mainBody, feedAndCut)
+    )
 
     console.log('Main payload spooled', Date.now() - startTime)
     printer.write(job)
