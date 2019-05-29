@@ -18,6 +18,6 @@
   },
   "dependencies": {
     "args": "^5.0.0",
-    "upng-js": "^2.1.0"
+    "lodepng": "^1.2.0"
   }
 }

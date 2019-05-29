@@ -1,5 +1,5 @@
 const fs = require('fs')
-const UPNG = require('upng-js')
+const lodePng = require('lodepng')
 
 const pngToMonoLiner = require('./lib/png-mono-liner')
 const {
@@ -11,16 +11,16 @@ const {
 } = require('./lib/util')
 
 const init = options => {
-  options = Object.assign({}, options, { debug: true, logger: console })
+  options = Object.assign({}, options, { debug: false, logger: console })
 
-  return function(png) {
+  return async function(png) {
     if (options.debug) options.logger.info('********** Print Job Initiated *************')
     const startTime = Date.now()
 
     let lines = []
 
-    const pngRGB = UPNG.decode(png)
-    if (options.debug) options.logger.info('UPNG Read', Date.now() - startTime)
+    const pngRGB = await lodePng.decode(png)
+    if (options.debug) options.logger.info('LODEPNG Read', Date.now() - startTime)
 
     const printer = fs.createWriteStream('/dev/usb/lp0')
     if (options.debug) options.logger.info('USB Write Stream Opened', Date.now() - startTime)
