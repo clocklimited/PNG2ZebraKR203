@@ -1,6 +1,6 @@
 {
   "name": "png-to-zebra-ak203",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "bin": {
     "png2zebra": "./index.js"
   },
