@@ -1,5 +1,5 @@
 {
-  "name": "png-to-zebra-ak203",
+  "name": "png-to-zebra",
   "version": "1.0.1",
   "description": "Converts png to binary and sends to Zebra AK203 thermal printer.",
   "keywords": [],
