@@ -1,6 +1,13 @@
 {
   "name": "png-to-zebra-ak203",
   "version": "1.0.0",
+  "description": "Converts png to binary and sends to Zebra AK203 thermal printer.",
+  "keywords": [],
+  "license": "MIT",
+  "repository": "github:clocklimited/PNG2ZebraKR203",
+  "bugs": {
+    "url": "https://github.com/clocklimited/PNG2ZebraKR203/issues"
+  },
   "bin": {
     "png2zebra": "./index.js"
   },
