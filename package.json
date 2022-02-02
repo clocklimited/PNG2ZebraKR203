@@ -25,6 +25,6 @@
   },
   "dependencies": {
     "args": "^5.0.0",
-    "lodepng": "^1.2.0"
+    "lodepng": "^2.1.0"
   }
 }

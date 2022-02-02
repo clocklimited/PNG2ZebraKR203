@@ -18,6 +18,11 @@
     esutils "^2.0.2"
     js-tokens "^4.0.0"
 
+"@canvas/image-data@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@canvas/image-data/-/image-data-1.0.0.tgz#3bd2cd856e13fc9e2c25feff360a4056857b0367"
+  integrity sha512-BxOqI5LgsIQP1odU5KMwV9yoijleOPzHL18/YvNqF9KFSGF2K/DLlYAbDQsWqd/1nbaFuSkYD/191dpMtNh4vw==
+
 acorn-jsx@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/acorn-jsx/-/acorn-jsx-4.1.1.tgz#e8e41e48ea2fe0c896740610ab6a4ffd8add225e"
@@ -749,12 +754,12 @@ lodash@^4.17.10, lodash@^4.17.4, lodash@^4.17.5:
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
   integrity sha512-cQKh8igo5QUhZ7lg38DYWAxMvjSAKG0A8wGSVimP07SIUEK2UO+arSRKbRZWtelMtN5V0Hkwh5ryOto/SshYIg==
 
-lodepng@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/lodepng/-/lodepng-1.2.0.tgz#088cc1192578e652025006caef0971d1b4f296c5"
-  integrity sha512-nLlKnKNImiC3CjwmfiUne7sPj0Ba5+6HFXDkm+pOuI1j8sAJpOMcRe5ATgS9W4nod2SVGgiPv8LSbt99W7jx2g==
+lodepng@2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/lodepng/-/lodepng-2.1.0.tgz#64e9f09a3566658ea4a2abf7615df77a48b805b2"
+  integrity sha512-7qzjpeyCG7HOFuwXfQjvGP7/NbZTUaDVoExPSoQgm+15J8gUADQ/8f9BD0C0u7G82QIxc+YGaTBf0Zz9RheyKA==
   dependencies:
-    nan "^2.6.2"
+    "@canvas/image-data" "^1.0.0"
 
 mimic-fn@^1.0.0:
   version "1.2.0"
@@ -799,11 +804,6 @@ mute-stream@0.0.7:
   version "0.0.7"
   resolved "https://registry.yarnpkg.com/mute-stream/-/mute-stream-0.0.7.tgz#3075ce93bc21b8fab43e1bc4da7e8115ed1e7bab"
   integrity sha1-MHXOk7whuPq0PhvE2n6BFe0ee6s=
-
-nan@^2.6.2:
-  version "2.14.0"
-  resolved "https://registry.yarnpkg.com/nan/-/nan-2.14.0.tgz#7818f722027b2459a86f0295d434d1fc2336c52c"
-  integrity sha512-INOFj37C7k3AfaNTtX8RhsTw7qRy7eLET14cROi9+5HAVbbHuIWUHEauBv5qT4Av2tWasiTY1Jw6puUNqRJXQg==
 
 natural-compare@^1.4.0:
   version "1.4.0"
